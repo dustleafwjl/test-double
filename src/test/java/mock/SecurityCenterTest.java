@@ -8,12 +8,17 @@ public class SecurityCenterTest {
     /* 需求描述：
     编写SecurityCenter类的单元测试，单元测试switchOn方法，不依赖于DoorPanel的close的方法实现
     * */
-
+    SecurityCenter securityCenter;
+    DoorPaneMock doorPaneMock;
     @BeforeEach
     public void setUp() {
+        doorPaneMock = new DoorPaneMock();
+        securityCenter = new SecurityCenter(doorPaneMock);
     }
 
     @Test
     public void shouldVerifyDoorIsClosed() {
+        securityCenter.switchOn();
+        doorPaneMock.verityCloseDone();
     }
 }
